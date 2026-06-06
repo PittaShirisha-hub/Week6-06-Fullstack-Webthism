@@ -3,20 +3,38 @@ import axios from "axios";
 
 function RestaurantsPage() {
   const [restaurants, setRestaurants] = useState([]);
+  const [menus, setMenus] = useState([]);
+  const [reservations, setReservations] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/api/restaurants")
-      .then((res) => {
-        setRestaurants(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    fetchData();
   }, []);
+
+  const fetchData = async () => {
+    try {
+      const restaurantRes = await axios.get(
+        "http://localhost:5000/api/restaurants"
+      );
+
+      const menuRes = await axios.get(
+        "http://localhost:5000/api/menus"
+      );
+
+      const reservationRes = await axios.get(
+        "http://localhost:5000/api/reservations"
+      );
+
+      setRestaurants(restaurantRes.data);
+      setMenus(menuRes.data);
+      setReservations(reservationRes.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="container">
+
       <div
         style={{
           background: "#7c3aed",
@@ -45,21 +63,25 @@ function RestaurantsPage() {
         </button>
       </div>
 
+      {/* Stats */}
+
       <div className="stats-container">
+
         <div className="stats-card">
           <h2>🍽️ {restaurants.length}</h2>
           <p>Restaurants</p>
         </div>
 
         <div className="stats-card">
-          <h2>📋 10</h2>
+          <h2>📋 {menus.length}</h2>
           <p>Menu Items</p>
         </div>
 
         <div className="stats-card">
-          <h2>📅 1</h2>
+          <h2>📅 {reservations.length}</h2>
           <p>Reservations</p>
         </div>
+
       </div>
 
       <h1>Featured Restaurants ({restaurants.length})</h1>
@@ -96,6 +118,7 @@ function RestaurantsPage() {
       <footer>
         <p>Restaurant Reservation System © 2026</p>
       </footer>
+
     </div>
   );
 }
