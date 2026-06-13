@@ -240,6 +240,39 @@ POST /api/payment/create-order
 
 ---
 
+## Live Deployment
+
+### Frontend (Vercel)
+
+https://week6-06-fullstack-webthism.vercel.app/
+
+### Backend (Render)
+
+https://week6-06-fullstack-webthism.onrender.com
+
+### GitHub Repository
+
+https://github.com/PittaShirisha-hub/Week6-06-Fullstack-Webthism
+
+---
+
+## Features Implemented
+
+* Restaurant Listing
+* Menu Browsing
+* Reservation Booking
+* Reservation Confirmation
+* Razorpay Payment Integration
+* Payment Success Screen
+* Email Notifications
+* User Dashboard
+* Admin Dashboard
+* Supabase Database Integration
+* Backend REST APIs
+* Frontend & Backend Deployment
+
+---
+
 ## 👩‍💻 Developer
 
 **Shirisha Pitta**
@@ -252,8 +285,4 @@ https://github.com/PittaShirisha-hub
 ## ⭐ Project Status
 
 Completed Successfully ✅
-# Week6-06-Fullstack-Webthism
-# Week6-06-Fullstack-Webthism
-# Week6-06-Fullstack-Webthism
-# Week6-06-Fullstack-Webthism
 # Week6-06-Fullstack-Webthism
