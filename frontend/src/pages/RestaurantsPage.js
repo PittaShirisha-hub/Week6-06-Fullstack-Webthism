@@ -13,15 +13,15 @@ function RestaurantsPage() {
   const fetchData = async () => {
     try {
       const restaurantRes = await axios.get(
-        "http://localhost:5000/api/restaurants"
+        "https://week6-06-fullstack-webthism.onrender.com/api/restaurants"
       );
 
       const menuRes = await axios.get(
-        "http://localhost:5000/api/menus"
+        "https://week6-06-fullstack-webthism.onrender.com/api/menus"
       );
 
       const reservationRes = await axios.get(
-        "http://localhost:5000/api/reservations"
+        "https://week6-06-fullstack-webthism.onrender.com/api/reservations"
       );
 
       setRestaurants(restaurantRes.data);

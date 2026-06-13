@@ -26,7 +26,7 @@ function ReservationPage() {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/reservations",
+        "https://week6-06-fullstack-webthism.onrender.com/api/reservations",
         {
           method: "POST",
           headers: {

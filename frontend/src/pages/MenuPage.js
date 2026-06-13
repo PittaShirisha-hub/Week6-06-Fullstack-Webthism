@@ -43,7 +43,7 @@ function MenuPage() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/menus")
+      .get("https://week6-06-fullstack-webthism.onrender.com/api/menus")
       .then((res) => {
         if (restaurantId) {
           setMenus(

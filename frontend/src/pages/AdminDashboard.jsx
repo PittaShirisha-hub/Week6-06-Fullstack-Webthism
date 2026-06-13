@@ -11,7 +11,7 @@ function AdminDashboard() {
 
   const fetchRestaurants = async () => {
     const response = await fetch(
-      "http://localhost:5000/api/restaurants"
+      "https://week6-06-fullstack-webthism.onrender.com/api/restaurants"
     );
 
     const data = await response.json();
@@ -21,7 +21,7 @@ function AdminDashboard() {
 
   const fetchReservations = async () => {
     const response = await fetch(
-      "http://localhost:5000/api/reservations"
+      "https://week6-06-fullstack-webthism.onrender.com/api/reservations"
     );
 
     const data = await response.json();

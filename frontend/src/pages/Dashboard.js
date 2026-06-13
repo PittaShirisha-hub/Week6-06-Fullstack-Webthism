@@ -14,19 +14,19 @@ function DashboardPage() {
   const fetchData = async () => {
     try {
       const userRes = await axios.get(
-        "http://localhost:5000/api/users"
+        "https://week6-06-fullstack-webthism.onrender.com/api/users"
       );
 
       const reservationRes = await axios.get(
-        "http://localhost:5000/api/reservations"
+        "https://week6-06-fullstack-webthism.onrender.com/api/reservations"
       );
 
       const restaurantRes = await axios.get(
-        "http://localhost:5000/api/restaurants"
+        "https://week6-06-fullstack-webthism.onrender.com/api/restaurants"
       );
 
       const menuRes = await axios.get(
-        "http://localhost:5000/api/menus"
+        "https://week6-06-fullstack-webthism.onrender.com/api/menus"
       );
 
       setUser(userRes.data[0]);
@@ -47,7 +47,7 @@ function DashboardPage() {
 
     try {
       await axios.delete(
-        `http://localhost:5000/api/reservations/${id}`
+        `https://week6-06-fullstack-webthism.onrender.com/api/reservations/${id}`
       );
 
       setReservations(
