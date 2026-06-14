@@ -123,9 +123,6 @@ app.get("/api/reservations", async (req, res) => {
   }
 });
 
-/* =========================
-   CREATE RESERVATION
-========================= */
 
 /* =========================
    CREATE RESERVATION
@@ -186,7 +183,7 @@ app.post("/api/reservations", async (req, res) => {
     });
 
     sendReservationEmail(
-      process.env.EMAIL_USER,
+      email,
       restaurantName,
       reservation_date,
       reservation_time,

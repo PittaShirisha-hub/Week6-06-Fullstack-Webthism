@@ -6,6 +6,7 @@ function ReservationPage() {
     date: "",
     time: "",
     guests: "",
+    email: "",
   });
 
   const [loading, setLoading] = useState(false);
@@ -47,6 +48,7 @@ function ReservationPage() {
             reservation_date: form.date,
             reservation_time: form.time,
             guests: Number(form.guests),
+            email: form.email,
             status: "Confirmed",
           }),
         }
@@ -69,6 +71,7 @@ function ReservationPage() {
           date: form.date,
           time: form.time,
           guests: form.guests,
+          email: form.email,
         })
       );
 
@@ -81,6 +84,7 @@ function ReservationPage() {
         date: "",
         time: "",
         guests: "",
+        email: "",
       });
 
       window.location.href = "/payment";
@@ -141,6 +145,17 @@ function ReservationPage() {
             value={form.guests}
             onChange={handleChange}
             min="1"
+            required
+          />
+
+          <p>Email</p>
+
+          <input
+            type="email"
+            name="email"
+            value={form.email}
+            onChange={handleChange}
+            placeholder="Enter your email"
             required
           />
 
