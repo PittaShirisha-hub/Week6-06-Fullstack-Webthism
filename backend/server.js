@@ -149,7 +149,6 @@ app.post("/api/reservations", async (req, res) => {
           reservation_date,
           reservation_time,
           guests,
-          email,
           status,
         },
       ])
