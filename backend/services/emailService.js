@@ -1,4 +1,6 @@
-const nodemailer = require("nodemailer");
+const { Resend } = require("resend");
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 const sendReservationEmail = async (
   email,
@@ -8,47 +10,26 @@ const sendReservationEmail = async (
   guests
 ) => {
   try {
-    const transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
-      port: 587,
-      secure: false,
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-    });
-
-    const mailOptions = {
-      from: process.env.EMAIL_USER,
+    const data = await resend.emails.send({
+      from: "onboarding@resend.dev",
       to: email,
       subject: "Restaurant Reservation Confirmation",
       html: `
         <h2>🎉 Reservation Confirmed</h2>
-
         <p><strong>Restaurant:</strong> ${restaurant}</p>
-
         <p><strong>Date:</strong> ${date}</p>
-
         <p><strong>Time:</strong> ${time}</p>
-
         <p><strong>Guests:</strong> ${guests}</p>
-
         <br>
-
         <p>Thank you for booking with us!</p>
       `,
-    };
+    });
 
-    const info = await transporter.sendMail(mailOptions);
-    
-    console.log("Email Sent Successfully");
-    console.log("Accepted:", info.accepted);
-    console.log("Rejected:", info.rejected);
-    console.log("Message ID:", info.messageId);
+    console.log("Email Sent:", data);
 
     return true;
   } catch (error) {
-    console.log("Email Error:", error.message);
+    console.log("Email Error:", error);
 
     return false;
   }
