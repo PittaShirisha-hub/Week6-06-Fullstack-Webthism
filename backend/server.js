@@ -136,6 +136,7 @@ app.post("/api/reservations", async (req, res) => {
       reservation_date,
       reservation_time,
       guests,
+      email,
       status,
     } = req.body;
 
@@ -148,6 +149,7 @@ app.post("/api/reservations", async (req, res) => {
           reservation_date,
           reservation_time,
           guests,
+          email,
           status,
         },
       ])
@@ -184,7 +186,7 @@ app.post("/api/reservations", async (req, res) => {
 
 
     console.log("Email received:", email);
-    
+
     sendReservationEmail(
       email,
       restaurantName,
