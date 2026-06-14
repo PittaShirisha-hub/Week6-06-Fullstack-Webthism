@@ -182,6 +182,9 @@ app.post("/api/reservations", async (req, res) => {
       data,
     });
 
+
+    console.log("Email received:", email);
+    
     sendReservationEmail(
       email,
       restaurantName,
