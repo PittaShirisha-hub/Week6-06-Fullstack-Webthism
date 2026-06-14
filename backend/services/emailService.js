@@ -37,9 +37,12 @@ const sendReservationEmail = async (
       `,
     };
 
-    await transporter.sendMail(mailOptions);
-
+    const info = await transporter.sendMail(mailOptions);
+    
     console.log("Email Sent Successfully");
+    console.log("Accepted:", info.accepted);
+    console.log("Rejected:", info.rejected);
+    console.log("Message ID:", info.messageId);
 
     return true;
   } catch (error) {
