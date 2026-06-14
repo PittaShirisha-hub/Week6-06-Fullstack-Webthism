@@ -127,6 +127,10 @@ app.get("/api/reservations", async (req, res) => {
    CREATE RESERVATION
 ========================= */
 
+/* =========================
+   CREATE RESERVATION
+========================= */
+
 app.post("/api/reservations", async (req, res) => {
   try {
     const {
@@ -175,19 +179,26 @@ app.post("/api/reservations", async (req, res) => {
       restaurantName = "Domino's Pizza";
     }
 
-    await sendReservationEmail(
-      process.env.EMAIL_USER,
-      restaurantName,
-      reservation_date,
-      reservation_time,
-      guests
-    );
-
     res.json({
       success: true,
       message: "Reservation Created Successfully",
       data,
     });
+
+    sendReservationEmail(
+      process.env.EMAIL_USER,
+      restaurantName,
+      reservation_date,
+      reservation_time,
+      guests
+    )
+      .then(() => {
+        console.log("Email sent successfully");
+      })
+      .catch((err) => {
+        console.log("Email Error:", err.message);
+      });
+
   } catch (err) {
     console.log(err);
 

@@ -8,11 +8,18 @@ function ReservationPage() {
     guests: "",
   });
 
+  const [loading, setLoading] = useState(false);
+
   const restaurantMap = {
     "Food Paradise": 1,
     "Barbeque Nation": 2,
     "Domino's Pizza": 3,
   };
+
+  const API_URL =
+    process.env.NODE_ENV === "production"
+      ? "https://week6-06-fullstack-webthism.onrender.com"
+      : "http://localhost:5000";
 
   const handleChange = (e) => {
     setForm({
@@ -24,9 +31,11 @@ function ReservationPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    setLoading(true);
+
     try {
       const response = await fetch(
-        "https://week6-06-fullstack-webthism.onrender.com/api/reservations",
+        `${API_URL}/api/reservations`,
         {
           method: "POST",
           headers: {
@@ -48,6 +57,7 @@ function ReservationPage() {
       console.log(data);
 
       if (!response.ok) {
+        setLoading(false);
         alert("Failed to save reservation");
         return;
       }
@@ -62,6 +72,8 @@ function ReservationPage() {
         })
       );
 
+      setLoading(false);
+
       alert("Reservation Saved Successfully!");
 
       setForm({
@@ -74,6 +86,9 @@ function ReservationPage() {
       window.location.href = "/payment";
     } catch (error) {
       console.log(error);
+
+      setLoading(false);
+
       alert("Server Error");
     }
   };
@@ -132,9 +147,27 @@ function ReservationPage() {
           <br />
           <br />
 
-          <button type="submit">
-            Book Reservation
+          <button
+            type="submit"
+            disabled={loading}
+          >
+            {loading
+              ? "Booking Reservation..."
+              : "Book Reservation"}
           </button>
+
+          {loading && (
+            <p
+              style={{
+                marginTop: "15px",
+                color: "#007bff",
+                fontWeight: "bold",
+              }}
+            >
+              Processing your reservation...
+              Please wait a few seconds.
+            </p>
+          )}
         </form>
       </div>
     </div>

@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
 
 import Navbar from "./components/Navbar";
 
@@ -13,6 +14,15 @@ import ConfirmationPage from "./pages/ConfirmationPage";
 import AdminDashboard from "./pages/AdminDashboard";
 
 function App() {
+  useEffect(() => {
+    // Wake up backend when app loads
+    fetch(
+      "https://week6-06-fullstack-webthism.onrender.com/api/restaurants"
+    ).catch((error) => {
+      console.log("Backend wake-up error:", error);
+    });
+  }, []);
+
   return (
     <BrowserRouter>
       <Navbar />
